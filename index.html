@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakura Resin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Sakura Petals Background -->
+<canvas id="petals"></canvas>
+
+
+<!-- HEADER -->
+
+<header>
+
+<div class="logo">
+<img src="images/sakura.png" alt="Sakura Resin Logo">
+<h1>Sakura Resin</h1>
+</div>
+
+<nav>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#hairclips">Hair Clips</a></li>
+<li><a href="#combs">Combs</a></li>
+<li><a href="#bracelets">Bracelets</a></li>
+<li><a href="#jewelry">Jewelry</a></li>
+<li><a href="#necklaces">Necklaces</a></li>
+<li><a href="#couples">Couples Set</a></li>
+<li><a href="#stationery">Stationery</a></li>
+<li><a href="#anime">Anime Merch</a></li>
+</ul>
+</nav>
+
+</header>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<h2>Welcome to Sakura Resin</h2>
+
+<p>
+At Sakura Resin, we create beautiful handcrafted resin products inspired by elegance,
+creativity, and anime culture. Every piece is carefully designed to be unique and meaningful.
+</p>
+
+<p>
+We also offer <strong>customized designs based on your personal preference.</strong>
+Whether you want a special color combination, a personalized gift, or an anime-inspired design,
+we bring your ideas to life.
+</p>
+
+</section>
+
+
+
+<!-- HAIR CLIPS -->
+
+<section id="hairclips">
+
+<h2>Hair Clips</h2>
+
+<div class="gallery">
+
+<img src="images/h1.jpeg" alt="Hair Clip">
+<img src="images/h2.jpeg" alt="Hair Clip">
+<img src="images/h6.jpeg" alt="Hair Clip">
+
+</div>
+
+</section>
+
+
+
+<!-- COMBS -->
+
+<section id="combs">
+
+<h2>Combs</h2>
+
+<div class="gallery">
+
+<img src="images/comb.jpeg" alt="Comb">
+<img src="images/comb5.jpeg" alt="Comb">
+
+</div>
+
+</section>
+
+
+
+<!-- BRACELETS -->
+
+<section id="bracelets">
+
+<h2>Bracelets</h2>
+
+<div class="gallery">
+
+<img src="images/b8.jpeg" alt="Bracelet">
+<img src="images/brac.jpeg" alt="Bracelet">
+
+</div>
+
+</section>
+
+
+
+<!-- JEWELRY -->
+
+<section id="jewelry">
+
+<h2>Jewelry</h2>
+
+<div class="gallery">
+
+<img src="images/cm3.jpeg" alt="Jewelry">
+<img src="images/b1.jpeg" alt="Jewelry">
+
+</div>
+
+</section>
+
+
+
+<!-- NECKLACES -->
+
+<section id="necklaces">
+
+<h2>Necklaces</h2>
+
+<div class="gallery">
+
+<img src="images/n5.jpeg" alt="Necklace">
+<img src="images/n1.jpeg" alt="Necklace">
+
+</div>
+
+</section>
+
+
+
+<!-- COUPLES SET -->
+
+<section id="couples">
+
+<h2>Couples Set</h2>
+
+<div class="gallery">
+
+<img src="images/c6.jpeg" alt="Couples Set">
+<img src="images/c4.jpeg" alt="Couples Set">
+
+</div>
+
+</section>
+
+
+
+<!-- STATIONERY -->
+
+<section id="stationery">
+
+<h2>Stationery</h2>
+
+<div class="gallery">
+
+<img src="images/s1.jpeg" alt="Notebook">
+<img src="images/s34.jpeg" alt="Bookmark">
+<img src="images/s5.jpeg" alt="Pen">
+
+</div>
+
+</section>
+
+
+
+<!-- ANIME MERCH -->
+
+<section id="anime">
+
+<h2>Anime Merch</h2>
+
+<div class="gallery">
+
+<img src="images/a23.jpeg" alt="Anime Merch">
+<img src="images/a8.jpeg" alt="Anime Merch">
+
+</div>
+
+</section>
+
+
+
+
+
+<!-- EXTRA PHOTO CAROUSEL -->
+
+<section class="photo-carousel">
+
+<h2>More products</h2>
+
+<div class="carousel">
+
+<img src="images/a5.jpeg">
+<img src="images/c4 (2).jpeg">
+<img src="images/b7.jpeg">
+<img src="images/c1.jpeg">
+<img src="images/b1.jpeg">
+<img src="images/b3.jpeg">
+<img src="images/c43.jpeg">
+<img src="images/cm0.jpeg">
+<img src="images/a1.jpeg">
+<img src="images/c1.jpeg">
+<img src="images/c6.jpeg">
+<img src="images/cm7.jpeg">
+<img src="images/n1.jpeg">
+<img src="images/comb.jpeg">
+<img src="images/n5.jpeg">
+
+</div>
+
+</section>
+
+
+<script>
+
+/* Sakura Petals Animation */
+
+const canvas = document.getElementById("petals");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let petals = [];
+
+for(let i=0;i<40;i++){
+petals.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*5+2,
+d:Math.random()*1
+});
+}
+
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="#ffc0cb";
+
+ctx.beginPath();
+
+for(let i=0;i<petals.length;i++){
+let p=petals[i];
+ctx.moveTo(p.x,p.y);
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2,true);
+}
+
+ctx.fill();
+update();
+}
+
+function update(){
+
+for(let i=0;i<petals.length;i++){
+
+let p=petals[i];
+
+p.y+=p.d+1;
+p.x+=Math.sin(p.y*0.01);
+
+if(p.y>canvas.height){
+petals[i]={
+x:Math.random()*canvas.width,
+y:0,
+r:p.r,
+d:p.d
+};
+}
+
+}
+
+}
+
+setInterval(draw,33);
+
+</script>
+```
+
+
+
+
+<!-- CALL TO ACTION -->
+
+<section class="cta">
+
+<h2>Order Your Custom Piece</h2>
+
+<p>
+Love what you see? Message us on WhatsApp to place an order or request a
+custom resin piece made specially for you.
+</p>
+
+<div class="cta-buttons">
+
+<a href="https://wa.me/2347087924197" class="btn whatsapp">
+Order on WhatsApp
+</a>
+
+<a href="https://www.instagram.com/sakuraresinng/#" class="btn instagram">
+Instagram
+</a>
+
+<a href="#" class="btn tiktok">
+TikTok
+</a>
+
+</div>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>© 2026 Sakura Resin. All rights reserved.</p>
+
+</footer>
+
+
+</body>
+</html>
+```
